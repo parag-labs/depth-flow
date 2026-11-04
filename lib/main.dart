@@ -106,7 +106,7 @@ class _DepthScreenState extends State<DepthScreen> {
           height: diameter,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            gradient: RadialGradient(colors: [color, color.withOpacity(0)]),
+            gradient: RadialGradient(colors: [color, color.withValues(alpha: 0)]),
           ),
         ),
       ),
@@ -164,12 +164,13 @@ class _Parallax extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = parallaxFor(tilt, depth);
+    final s = scaleFor(depth);
     return AnimatedContainer(
       duration: const Duration(milliseconds: 220),
       curve: Curves.easeOut,
       transform: Matrix4.identity()
-        ..translate(p.dx, p.dy)
-        ..scale(scaleFor(depth)),
+        ..translateByDouble(p.dx, p.dy, 0, 1)
+        ..scaleByDouble(s, s, s, 1),
       transformAlignment: Alignment.center,
       child: child,
     );
@@ -187,10 +188,10 @@ class _LayerCard extends StatelessWidget {
       width: 300,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: layer.glass ? Colors.white.withOpacity(0.08) : const Color(0xFF161A28),
+        color: layer.glass ? Colors.white.withValues(alpha: 0.08) : const Color(0xFF161A28),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: layer.glass ? Colors.white.withOpacity(0.25) : const Color(0x22FFFFFF)),
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.5), blurRadius: elevation, offset: Offset(0, elevation * 0.4))],
+        border: Border.all(color: layer.glass ? Colors.white.withValues(alpha: 0.25) : const Color(0x22FFFFFF)),
+        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: elevation, offset: Offset(0, elevation * 0.4))],
       ),
       child: Row(
         children: [

@@ -46,6 +46,8 @@ flowchart TB
 
 ## Demo
 
+Requires Flutter 3.47.9 (stable, Dart 3.13) or newer — the version CI and the Pages deploy use.
+
 ```bash
 flutter run -d chrome     # web (move the mouse)
 flutter run               # a device (tilt / drag)
