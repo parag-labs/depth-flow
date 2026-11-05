@@ -197,12 +197,15 @@ class _LayerCard extends StatelessWidget {
         children: [
           Icon(layer.glass ? Icons.add_circle_outline : Icons.article_outlined, color: layer.glass ? const Color(0xFF34D9C8) : const Color(0xFF9A8CFF)),
           const SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(layer.title, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15)),
-              Text(layer.subtitle, style: const TextStyle(color: Color(0xFF98A2B8), fontSize: 12.5)),
-            ],
+          Flexible(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(layer.title, overflow: TextOverflow.ellipsis, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15)),
+                Text(layer.subtitle, overflow: TextOverflow.ellipsis, style: const TextStyle(color: Color(0xFF98A2B8), fontSize: 12.5)),
+              ],
+            ),
           ),
         ],
       ),

@@ -64,8 +64,9 @@ flutter run               # a device (tilt / drag)
 
 ## Testing
 
-`flutter test` — 12 tests: parallax ordering (near > far), direction (opposes motion), bounds and
-clamping, determinism; blur/scale/shadow monotonicity; and the pointer→tilt mapping.
+`flutter test` — 14 tests: parallax ordering (near > far), direction (opposes motion), bounds and
+clamping, determinism; blur/scale/shadow monotonicity; the pointer→tilt mapping; and a layout
+check that every card hugs its content and stays visible on wide and phone-sized screens.
 
 ```bash
 flutter test
@@ -84,7 +85,7 @@ depth-flow/
 ├── lib/
 │   ├── core/depth.dart   # pure Dart: depth model + parallax/blur/scale/shadow math (unit-tested)
 │   └── main.dart         # the spatial scene renderer
-├── test/                 # 12 flutter_test unit tests
+├── test/                 # 14 flutter_test tests (depth math + scene layout)
 └── web/
 ```
 
